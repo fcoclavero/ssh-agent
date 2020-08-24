@@ -1,0 +1,27 @@
+on: [push, pull_request]
+
+jobs:
+    single_key_demo:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macOS-latest]
+        runs-on: ${{ matrix.os }}
+        steps:
+            - uses: actions/checkout@v1
+            - name: Setup key
+              uses: ./
+              with:
+                  ssh-private-key: |
+                    ${{ secrets.DEMO_KEY }}
+
+    multiple_keys_demo:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macOS-latest]
+        runs-on: ${{ matrix.os }}
+        steps:
+            - uses: actions/checkout@v1
+            - name: Setup key
+              uses: ./
+              with:
+                  ssh-private-key: ${{ secrets.DEMO_KEY }}

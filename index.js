@@ -3,8 +3,9 @@ const child_process = require('child_process');
 const fs = require('fs');
 
 try {
-
+    console.log("-------")
     const home = core.getInput('act') ? '/root' : process.env['HOME'];
+    console.log(home)
     const homeSsh = home + '/.ssh';
 
     const privateKey = core.getInput('ssh-private-key');

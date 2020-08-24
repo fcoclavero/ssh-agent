@@ -58,8 +58,9 @@ const child_process = __webpack_require__(129);
 const fs = __webpack_require__(747);
 
 try {
-
-    const home = process.env['HOME'];
+    console.log("-------")
+    const home = core.getInput('act') ? '/root' : process.env['HOME'];
+    console.log(home)
     const homeSsh = home + '/.ssh';
 
     const privateKey = core.getInput('ssh-private-key');
