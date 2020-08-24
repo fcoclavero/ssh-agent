@@ -1,11 +1,18 @@
 name: 'webfactory/ssh-agent'
 description: 'Run `ssh-agent` and load an SSH key to access other private repositories'
 inputs:
+    act:
+        description: 'Enable [ACT](https://github.com/nektos/act) mode.'
+        default: "false"
+        required: false
+
     ssh-private-key:
         description: 'Private SSH key to register in the SSH agent'
         required: true
+
     ssh-auth-sock:
         description: 'Where to place the SSH Agent auth socket'
+        required: false
 runs:
     using: 'node12'
     main: 'dist/index.js'
